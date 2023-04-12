@@ -1,21 +1,12 @@
 package lib;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Employee {
 	private enum Gender {
 		Male,
 		Female
 	}
-
-	private String employeeId;
-	private String firstName;
-	private String lastName;
-	private String idNumber;
-	private String address;
 
 	private int yearJoined;
 	private int monthJoined;
@@ -29,24 +20,19 @@ public class Employee {
 	private int otherMonthlyIncome;
 	private int annualDeductible;
 	private Family_Employee family_Employee;
+	private InformationOfEmployee info;
 
 	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address,
 			int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender,
-			Family_Employee family_Employee) {
-				
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.idNumber = idNumber;
-		this.address = address;
+			Family_Employee family_Employee, InformationOfEmployee info) {
+
 		this.yearJoined = yearJoined;
 		this.monthJoined = monthJoined;
 		this.dayJoined = dayJoined;
 		this.isForeigner = isForeigner;
 		this.gender = gender;
 		this.family_Employee = family_Employee;
-
-		Family_Employee familyEmploye = new Family_Employee(address, idNumber);
+		this.info = info;
 
 	}
 
