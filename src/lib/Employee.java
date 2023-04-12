@@ -23,20 +23,17 @@ public class Employee {
 	private int monthWorkingInYear;
 
 	private boolean isForeigner;
-	private Gender gender; 
+	private Gender gender;
 
 	private int monthlySalary;
 	private int otherMonthlyIncome;
 	private int annualDeductible;
-
-	private String spouseName;
-	private String spouseIdNumber;
-
-	private List<String> childNames;
-	private List<String> childIdNumbers;
+	private Family_Employee family_Employee;
 
 	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address,
-			int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender) {
+			int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender,
+			Family_Employee family_Employee) {
+				
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -47,9 +44,10 @@ public class Employee {
 		this.dayJoined = dayJoined;
 		this.isForeigner = isForeigner;
 		this.gender = gender;
+		this.family_Employee = family_Employee;
 
-		childNames = new LinkedList<String>();
-		childIdNumbers = new LinkedList<String>();
+		Family_Employee familyEmploye = new Family_Employee(address, idNumber);
+
 	}
 
 	/**
@@ -86,16 +84,6 @@ public class Employee {
 		this.otherMonthlyIncome = income;
 	}
 
-	public void setSpouse(String spouseName, String spouseIdNumber) {
-		this.spouseName = spouseName;
-		this.spouseIdNumber = idNumber;
-	}
-
-	public void addChild(String childName, String childIdNumber) {
-		childNames.add(childName);
-		childIdNumbers.add(childIdNumber);
-	}
-
 	public int getAnnualIncomeTax() {
 
 		// Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah
@@ -107,8 +95,9 @@ public class Employee {
 		} else {
 			monthWorkingInYear = 12;
 		}
-
+		String spouseIdNumber = family_Employee.getSpouseIdNumber();
+		int numOfChild = family_Employee.getChildIdNumbers().size();
 		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible,
-				spouseIdNumber.equals(""), childIdNumbers.size());
+				spouseIdNumber.equals(""), numOfChild);
 	}
 }
