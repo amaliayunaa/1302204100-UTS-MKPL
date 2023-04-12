@@ -8,9 +8,7 @@ public class Employee {
 		Female
 	}
 
-	private int yearJoined;
-	private int monthJoined;
-	private int dayJoined;
+	private LocalDate DateJoined;
 	private int monthWorkingInYear;
 
 	private boolean isForeigner;
@@ -24,11 +22,8 @@ public class Employee {
 
 	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address,
 			int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender,
-			Family_Employee family_Employee, InformationOfEmployee info) {
+			Family_Employee family_Employee, InformationOfEmployee info, LocalDate DateJoined) {
 
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.dayJoined = dayJoined;
 		this.isForeigner = isForeigner;
 		this.gender = gender;
 		this.family_Employee = family_Employee;
@@ -76,8 +71,8 @@ public class Employee {
 		// bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (date.getYear() == DateJoined.getYear()) {
+			monthWorkingInYear = date.getMonthValue() - DateJoined.getMonthValue();
 		} else {
 			monthWorkingInYear = 12;
 		}
