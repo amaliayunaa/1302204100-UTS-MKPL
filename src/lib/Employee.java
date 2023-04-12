@@ -20,9 +20,8 @@ public class Employee {
 	private Family_Employee family_Employee;
 	private InformationOfEmployee info;
 
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address,
-			int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender,
-			Family_Employee family_Employee, InformationOfEmployee info, LocalDate DateJoined) {
+	public Employee(boolean isForeigner, Gender gender, Family_Employee family_Employee, InformationOfEmployee info,
+			LocalDate DateJoined) {
 
 		this.isForeigner = isForeigner;
 		this.gender = gender;
